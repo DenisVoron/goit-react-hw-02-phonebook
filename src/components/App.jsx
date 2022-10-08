@@ -1,4 +1,44 @@
-export const App = () => {
+import React, { Component } from 'react'
+//import PropTypes from 'prop-types'
+
+import { Container } from './Container/Container'
+import { Section } from './Section/Section'
+import { ContactsForm } from './ContactsForm/ContactsForm';
+
+
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: ''
+  };
+
+  addContacts = () => {
+    const contact = {
+      id: 'id-1',
+    };
+
+
+    
+
+  };
+
+  //const 
+
+  render() {
+    return (
+      <Container>
+        <Section title='Phonebook'>
+          <ContactsForm />
+        </Section>
+      </Container>
+    );
+  }
+}
+
+
+
+
+/*export const App = () => {
   return (
     <div
       style={{
@@ -13,4 +53,4 @@ export const App = () => {
       React homework template
     </div>
   );
-};
+};*/
