@@ -1,6 +1,7 @@
 
-export const Filter = () => (
+export const Filter = ({value, onFilterChange }) => (
     <label htmlFor="">
-        <input type="text" /*/value={}*/ />
-  </label>  
+        Find contacts by name
+        <input type="text" value={value} onChange={onFilterChange}/>
+    </label>
 );

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import css from './ContactsForm.module.css';
+
 
 export class ContactsForm extends Component {
     state = {
@@ -26,7 +28,7 @@ export class ContactsForm extends Component {
 
     handleNameChange = event => {
         const name = event.currentTarget.name;
-        
+
         console.log(name);
         //console.log(number);
 
@@ -41,12 +43,13 @@ export class ContactsForm extends Component {
 
   render() {
       return (
-          <div>
-              <form autoComplete='off' onSubmit={this.handleSubmit}>
-                  <label htmlFor='name'>
+          <div className={css.wrapper}>
+              <form autoComplete='off' className={css.form} onSubmit={this.handleSubmit}>
+                  <label className={css['form-label']}>
                       Name
                       <input
                           type="text"
+                          className={css.input}
                           name="name"
                           value={this.state.name}
                           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -59,6 +62,7 @@ export class ContactsForm extends Component {
                       Number
                       <input
                           type="tel"
+                          className={css.input}
                           name="number"
                           value={this.state.number}
                           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
