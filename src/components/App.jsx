@@ -23,19 +23,33 @@ export class App extends Component {
   };
 
   addContacts = ({name, number}) => {
-    console.log(this.state.contacts);
+    const { contacts } = this.state;
 
-    
-    const contact = {
+    const contactObj = {
       id: nanoid(),
       name,
       number,
     };
 
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }))
+    for (const contact of contacts) {
 
+      if (contact.name === name) {
+        alert(`${name} is already in contact`);
+
+        return;
+      }
+    }
+
+    this.setState(prevState => ({
+      contacts: [contactObj, ...prevState.contacts],
+    }));
+  };
+
+  deleteContact = contactId => {
+    console.log(contactId);
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   changeFilter = event => {
@@ -58,7 +72,7 @@ export class App extends Component {
           <Filter value={this.state.filter} onFilterChange={this.changeFilter} />
         </Section>
         <Section title='Contacts'>
-          <ContactList contacts={contactList} />
+          <ContactList contacts={contactList} onDeleteContact={this.deleteContact} />
         </Section>
       </Container>
     );
