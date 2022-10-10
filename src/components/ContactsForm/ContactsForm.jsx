@@ -9,14 +9,10 @@ export class ContactsForm extends Component {
         number: ''
     };
 
-
     handleSubmit = event => {
         event.preventDefault();
 
-        console.log(this.state);
-
         this.props.onDataSubmit(this.state);
-        //this.props.onDataSubmit(this.state.number);
 
         this.reset();
     };
@@ -28,13 +24,6 @@ export class ContactsForm extends Component {
 
     handleNameChange = event => {
         const name = event.currentTarget.name;
-
-        console.log(name);
-        //console.log(number);
-
-        /*console.log(event.currentTarget);
-        console.log(event.currentTarget.name);
-        console.log(event.currentTarget.value);*/
 
         this.setState({
             [name]: event.currentTarget.value,
@@ -77,7 +66,3 @@ export class ContactsForm extends Component {
       );
   }
 }
-
-/*/export default contactsForm*/
-
-//pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

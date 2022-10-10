@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-//import PropTypes from 'prop-types'
+
 import { nanoid } from 'nanoid'
-//const model = nanoid()
-//console.log(model);
 
 import { Container } from './Container/Container'
 import { Section } from './Section/Section'
@@ -46,20 +44,18 @@ export class App extends Component {
   };
 
   deleteContact = contactId => {
-    console.log(contactId);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
 
   changeFilter = event => {
-    console.log(event.currentTarget.value)
-    this.setState({filter: event.currentTarget.value})
+    this.setState({ filter: event.currentTarget.value });
   };
 
 
   getVisiblContact = () => {
-    return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()))
+    return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
   };
 
   render() {
@@ -69,9 +65,9 @@ export class App extends Component {
       <Container>
         <Section title='Phonebook'>
           <ContactsForm onDataSubmit={this.addContacts} />
-          <Filter value={this.state.filter} onFilterChange={this.changeFilter} />
         </Section>
         <Section title='Contacts'>
+          <Filter value={this.state.filter} onFilterChange={this.changeFilter} />
           <ContactList contacts={contactList} onDeleteContact={this.deleteContact} />
         </Section>
       </Container>
